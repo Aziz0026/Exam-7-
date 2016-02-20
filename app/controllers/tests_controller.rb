@@ -1,6 +1,4 @@
 class TestsController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @tests = Test.all
   end
@@ -41,6 +39,7 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
+    @questions = Question.where(test_id: @test.id)
   end
 
   private

@@ -1,11 +1,12 @@
 <ol class="breadcrumb" style="margin-top: 20px">
-  <li><%= link_to 'Назад', root_path%></li>
+  <li><%= link_to 'Назад', root_path %></li>
   <li class="active"><%= @test.name %></li>
 </ol>
 
 <div class="row">
   <div class="col-sm-12">
-    <h1><% @test.name %> <%= link_to 'New Question', '', class: 'btn btn-success' %></h1>
+    <h1>
+      <%= @test.name %> <%= link_to 'New Question', new_question_path(@test), class: 'btn btn-success' %></h1>
   </div>
 </div>
 
@@ -17,16 +18,17 @@
     <th>Answers</th>
     <th>Actions</th>
   </tr>
-
+  <% @questions.each do |question| %>
       <tr>
-        <td>Questions</td>
+        <td><%= link_to question.name, question_path(question) %></td>
         <td>Answers</td>
         <td>
-          <%= link_to 'Edit', '' %>
-          <%= link_to 'Delete', '',
+          <%= link_to 'Edit', edit_question_path(question, @test.id)  %>
+          <%= link_to 'Delete', question_path(question, @test.id),
                       method: :delete,
-                      data: {confirm: 'Do you want to remove this product?'} %>
+                      data: {confirm: 'Do you want to remove this question?'} %>
         </td>
       </tr>
+  <% end %>
 
 </table>
