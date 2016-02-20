@@ -1,0 +1,32 @@
+<ol class="breadcrumb" style="margin-top: 20px">
+  <li><%= link_to 'Назад', root_path%></li>
+  <li class="active"><%= @test.name %></li>
+</ol>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1><% @test.name %> <%= link_to 'New Question', '', class: 'btn btn-success' %></h1>
+  </div>
+</div>
+
+<hr/>
+
+<table class="table table-striped">
+  <tr>
+    <th>Questions</th>
+    <th>Answers</th>
+    <th>Actions</th>
+  </tr>
+
+      <tr>
+        <td>Questions</td>
+        <td>Answers</td>
+        <td>
+          <%= link_to 'Edit', '' %>
+          <%= link_to 'Delete', '',
+                      method: :delete,
+                      data: {confirm: 'Do you want to remove this product?'} %>
+        </td>
+      </tr>
+
+</table>
