@@ -59,6 +59,6 @@ Rails.application.routes.draw do
   resources :tests
   resources :questions
   resources :answers
-  resources :test_results
+  resources :results
   root 'tests#index'
 end

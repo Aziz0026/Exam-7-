@@ -14,13 +14,13 @@
     <th>Results#</th>
     <th>Actions</th>
   </tr>
-
   <% @tests.each do |test| %>
+      <% @questions_counter = Question.where(test_id: test.id).count %>
       <tr>
         <td><%= link_to test.name, test_path(test) %></td>
-        <td>Link</td>
-        <td>Questions</td>
-        <td>Result</td>
+        <td><%= link_to  'Link', new_result_path(test) %></td>
+        <td><%= @questions_counter %></td>
+        <td><%= link_to 'Results', result_path(test) %></td>
         <td>
           <%= link_to 'Edit', edit_test_path(test)%>
           <%= link_to 'Delete', test_path(test),

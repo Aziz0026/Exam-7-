@@ -1,0 +1,36 @@
+<ol class="breadcrumb" style="margin-top: 20px">
+  <li><%= link_to 'Назад', root_path %></li>
+  <li class="active"><%= @test.name %></li>
+  <li class="active">Results</li>
+</ol>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1>
+      Results for <%= @test.name %></h1>
+  </div>
+</div>
+
+<hr/>
+
+<table class="table table-striped">
+  <tr>
+    <th>Student</th>
+    <th>Correct</th>
+    <th>View report</th>
+    <th>Actions</th>
+  </tr>
+  <% @results.each do |result| %>
+      <tr>
+        <td><%= result.name%> <%= result.surname%>, <%= result.group%></td>
+        <td>Correct</td>
+        <td>View report</td>
+        <td>
+          <%= link_to 'Delete', result_path(result, @test),
+                      method: :delete,
+                      data: {confirm: 'Do you want to remove this report?'} %>
+        </td>
+      </tr>
+  <% end %>
+
+</table>

@@ -1,0 +1,5 @@
+class AddTestIdToResults < ActiveRecord::Migration
+  def change
+    add_reference :results, :test, index: true, foreign_key: true
+  end
+end
