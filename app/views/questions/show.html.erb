@@ -1,12 +1,13 @@
 <ol class="breadcrumb" style="margin-top: 20px">
   <li><%= link_to 'Назад', test_path(@question.test_id) %></li>
   <li class="active"><%= @question.name %></li>
+  <li class="active">Answers</li>
 </ol>
 
 <div class="row">
   <div class="col-sm-12">
     <h1>
-      <%= @question.name %> <%= link_to 'New Answer', new_answers_path(@question.id), class: 'btn btn-success' %></h1>
+      <%= @question.name %> <%= link_to 'New Answer', new_answer_path(@question.id), class: 'btn btn-success' %></h1>
   </div>
 </div>
 
@@ -21,12 +22,24 @@
   <% @answers.each do |answer| %>
       <tr>
         <td><%= answer.name %></td>
-        <td>Is correct</td>
         <td>
-          <%= link_to 'Edit', ''  %>
-          <%= link_to 'Delete', '',
+          <div
+          <% if answer.correct == true %>
+          class="label label-success"
+          <% else %>
+          class="label label-danger"
+          <% end %>
+           style="font-size: 15px"
+          >
+            <%= answer.correct %>
+          </div>
+        </td>
+
+        <td>
+          <%= link_to 'Edit', edit_answer_path(answer, @question.id) %>
+          <%= link_to 'Delete', answer_path(answer, @question.id),
                       method: :delete,
-                      data: {confirm: 'Do you want to remove this question?'} %>
+                      data: {confirm: 'Do you want to remove this answer?'} %>
         </td>
       </tr>
   <% end %>
